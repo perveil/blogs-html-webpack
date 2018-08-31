@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">  
+	</head>
+	<body>
+		<div class="blog-header">
+			<span class="webSitename">Wanglaiso.com 小白前后端分离博客</span>
+			<button type="button" class="btn isLike" isLike="false">
+				<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star me
+				 <span class="badge isLikeNum">4</span>
+			</button>
+			<span class="isLikeBlog">喜欢我,必然不会让你失望</span>
+				
+		</div>
+		<div class="main-content">
+			<div class="blog-menu-wrap">
+				<div class="menu">
+					<span class="theme" isShow="false">java</span>
+					<ul class="menu-ul">
+						<li>java虚拟机 <span><i class="articleNum">N</i>人 喜欢,<i>N</i>条评论</span></li>
+						<li>java类加载<span><i class="articleNum">N</i>人 喜欢,<i>N</i>条评论</span></li>
+						<li>java多线程<span><i class="articleNum">N</i>人 喜欢,<i>N</i>条评论</span></li>
+					</ul>
+					
+				</div>
+				<div class="menu" >
+					<span class="theme" isShow="false">javascript</span>
+					<ul class="menu-ul">
+						<li>java虚拟机</li>
+						<li>java类加载</li>
+						<li>java多线程</li>
+					</ul>
+					
+				</div>
+				
+			</div>
+			<div class="blog-main-wrap">
+				
+				<div class="blog-text-wrap">
+					<pre class="hljs">
+						<code class="java">
+					    </code>
+					</pre>								
+				</div>
+				<div  class="btn-wrap">
+						<button type="button" class="btn LikeArticle">
+							<span class="glyphicon glyphicon-thumbs-up"></span> Good Article
+						</button>
+					    <span class="LikeNumAddOne">+1</span>
+						<button class="btn btn-primary raise-commit" data-toggle="modal" data-target="#commit-modal">发表评论</button>
+				</div>
+			</div>
+			<div class="blog-commit-wrap">
+				<div class="commit-wrap">
+
+		            <div class="idea-comment-item">
+		                <div  class="user-imge">
+		                    <i class="glyphicon glyphicon-user"></i>
+		                </div>
+						<span class="userName">用户f19txlnvfua</span>
+		                <span class="comment-time">2018年某年某日</span>
+		                <span class="comment-content">
+							博客实在写的太棒了博客实在写的太棒了博客实在写的太棒了实在写的太棒了博客实在写的太棒了博客实在写的太棒了博客实在写的太棒了实在写的太棒了博客实在写的太棒
+
+						</span>
+		                <span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">4</span></span>
+		
+		            </div>
+					<div class="idea-comment-item">
+						<div  class="user-imge">
+							<i class="glyphicon glyphicon-user"></i>
+						</div>
+						<span class="userName">用户f19txlnvfua</span>
+						<span class="comment-time">2018年某年某日</span>
+						<span class="comment-content">非常棒</span>
+						<span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">4</span></span>
+
+					</div>
+					<div class="idea-comment-item">
+						<div  class="user-imge">
+							<i class="glyphicon glyphicon-user"></i>
+						</div>
+						<span class="userName">用户f19txlnvfua</span>
+						<span class="comment-time">2018年某年某日</span>
+						<span class="comment-content">非常棒</span>
+						<span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">4</span></span>
+
+					</div>
+					<div class="idea-comment-item">
+						<div  class="user-imge">
+							<i class="glyphicon glyphicon-user"></i>
+						</div>
+						<span class="userName">用户f19txlnvfua</span>
+						<span class="comment-time">2018年某年某日</span>
+						<span class="comment-content">非常棒</span>
+						<span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">4</span></span>
+
+					</div>
+					<div class="idea-comment-item">
+						<div  class="user-imge">
+							<i class="glyphicon glyphicon-user"></i>
+						</div>
+						<span class="userName">用户f19txlnvfua</span>
+						<span class="comment-time">2018年某年某日</span>
+						<span class="comment-content">非常棒</span>
+						<span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">4</span></span>
+
+					</div>
+					<div class="idea-comment-item">
+						<div  class="user-imge">
+							<i class="glyphicon glyphicon-user"></i>
+						</div>
+						<span class="userName">用户f19txlnvfua</span>
+						<span class="comment-time">2018年某年某日</span>
+						<span class="comment-content">非常棒</span>
+						<span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">4</span></span>
+
+					</div>
+	            					
+				</div>
+	            <div class="Pagination">
+	            	<ul id="pageLimit"></ul>
+	            </div>
+	            
+
+				
+			</div>
+		</div>
+		<div class="blog-footer">
+			<span>Copyright©Tmaster团队:laiso</span>
+		</div>
+		<div class="modal fade" id="commit-modal" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">写下你自己的评论</h4>
+		      </div>
+		      <div class="modal-body">
+		      	
+		       <form class="form-inline">
+			       <div class="input-group input-group-lg">
+					  <span class="input-group-addon" id="sizing-addon1">@</span>
+					  <input type="email" class="form-control commit-email" placeholder="You can tell me your Email" aria-describedby="sizing-addon1">
+				   </div>
+				   <div class="input-group input-group-lg">
+				       <textarea placeholder="你的观点" class="commmit"></textarea>
+				   </div>
+			   </form>
+			   
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default raiseCommit" data-dismiss="modal">提交</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<script type="text/javascript" src="main.bundle.js" ></script>
+		<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+		<script >hljs.initHighlightingOnLoad();</script> 
+	</body>
+</html>
