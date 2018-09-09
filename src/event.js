@@ -1,54 +1,26 @@
-var Islike=true;
-var articleId=100;
+var Islike=false;
 $(".blog-header .isLike").click(function(){
 	if(Islike){
-		$(".blog-header .isLikeNum").text(parseInt($(".blog-header .isLikeNum").text())+1);
 		Islike=false;
+		 prompt("一定更加努力");
 	}else{
-		$(".blog-header .isLikeNum").text(parseInt($(".blog-header .isLikeNum").text())-1);
 		Islike=true;
+		 prompt("多谢喜欢");
 	}
-});
-$(".isLike").click(function () {
-	let IsLikethis=0;
-	if ($(this).attr("isLike")=="false"){
-        IsLikethis=1;
-        $(this).css({
-            color:"white",
-            background:"red",
-		});
-        $(".isLikeBlog").animate({
-            'opacity': '1',
-		})
-        $(".isLikeBlog").text("喜欢我,必然不会让你失望");
-        $(this).attr("isLike","true");
-	}else{
-        $(this).css({
-            color:"black",
-            background:"rgb(221,221,221)",
-        });
-		$(".isLikeBlog").text("确定不点个赞再走？");
-        $(".isLikeBlog").animate({
-            'opacity': '0',
-        },500,function () {
-            $(".isLikeBlog").animate({
-                'opacity': '1',})
-        })
-        $(this).attr("isLike","false");
-	}
-    $.ajax({
-        url:"", //addOrdeleteLikeNum
+	$.ajax({
+        url:"http://localhost:8080/blog/likeBlog", //addOrdeleteLikeNum
         type:'POST',
         data:{
-            'IsLikethis':IsLikethis,
+            'IsLikethis':Islike,
 
         },
         dataType:'JSON',
         success:function (data) {
-
+		    $(".blog-header .isLikeNum").text(data.likenum);
+		   
         }
     })
-})
+});
 $(".LikeArticle").click(function () {
 	$(this).css({
 		color:"white",
@@ -65,69 +37,66 @@ $(".LikeArticle").click(function () {
             "bottom":'2px',
         })
     });
-
-})
-$(".idea-comment-item .commit-likeNum").click(function(e){
-	let islike=0;
-	if($(this).children(".isLikeNum").attr("Islike")=="true"){
-		islike=1;
-		$(this).children(".isLikeNum").text(parseInt($(this).children(".isLikeNum").text())+1);
-		$(this).children(".isLikeNum").attr("Islike",false);
-	}else{
-		$(this).children(".isLikeNum").text(parseInt($(this).children(".isLikeNum").text())-1);
-		$(this).children(".isLikeNum").attr("Islike",true);
-	}
     $.ajax({
-        url:"", //addOrdeleteLikeNum
-        type:'POST',
-        data:{
-            'IsLike':islike,
+    url: "http://localhost:8080/article/likeArticle", //addOrdeleteLikeNum
+    type: 'POST',
+    data: {
+        'articleId': "1",
 
-        },
-        dataType:'JSON',
-        success:function (data) {
-
-        }
+    },
+    success: function(data) {
+    	 prompt("多谢喜欢");
+    }
     })
 })
-$(".menu .theme").click(function(e){
-	
-	if($(e.target).attr("isShow")=="false"){
-		$(e.target).next().fadeIn();
-		$(e.target).attr("isShow",true);
-	}else{
-		$(e.target).next().fadeOut();
-		$(e.target).attr("isShow",false);
-	}
-})
+
 $(".raiseCommit").click(function(){
     $.ajax({
-        url:"", //addcommit
+        url:"http://localhost:8080/comment/addComment",
         type:'POST',
         data:{
         	'commitContent':$(".commmit").val(),
-			'articleId':articleId,
+			'articleId':1,
+			
 		},
         dataType:'JSON',
         success:function (data) {
-           var commitItem=`
-            <div class="idea-comment-item">
-		                <div  class="user-imge">
-		                    <i class="glyphicon glyphicon-user"></i>
-		                </div>
-		                <span class="userName">`+CreateName()+"  在"+`</span>
-		                <span class="comment-time">`+(new Date()).toLocaleDateString()+" 评论了"+`</span>
-		                <span class="comment-content">`+$(".commmit").val()+`</span>
-		                <span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">`+data.commitLikeNum+`</span></span>
-		
-		    </div>`;
-           $(".commit-wrap").prepend(commitItem);
+        	if(data.state!=-3){
+	        	var commentItem=`
+	            <div class="idea-comment-item">
+			                <div  class="user-imge">
+			                    <i class="glyphicon glyphicon-user"></i>
+			                </div>
+			                <span class="userName">`+CreateName()+" "+`</span>
+			                <span class="comment-content">`+$(".commmit").val()+`</span>
+			                <span class="commit-likeNum"><i class="glyphicon glyphicon-heart"></i><span class="badge isLikeNum" Islike="true">`+0+`</span></span>
+			
+			    </div>`;
+			    	
+	           $(".commit-wrap").prepend(commentItem);
+	           prompt("评论成功");
+          }else{
+          	prompt(data.msg);
         }
+       }
     })
 })
 
+
+
 function CreateName() {;
     return "路人"+Math.random().toString(36).substr(2);
+}
+function  prompt(str){
+	$(".prompt .prompt-text").text(str);
+          	$(".prompt").animate({
+          		'top':"20px",
+          		'opacity':"1",
+          	},1000,function(){
+          		$(".prompt").animate({
+          		'top':"-170px",
+          		'opacity':"0",},3000);
+    })
 }
 
 module.exports=function(){

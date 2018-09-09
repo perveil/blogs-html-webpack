@@ -1,3 +1,5 @@
+'use strict'
+
 var webpack=require('webpack');
 const path=require('path');
 //const htmlWebpackPlugin=require('html-webpack-plugin');
@@ -6,14 +8,16 @@ const path=require('path');
 module.exports = {
     entry: "./src/main.js",
     //入口文件，并且公用的文件要分开打包，common.js 就是将相同的文件都统一打包
+    devServer: {
+        host:"127.0.0.1",
+        open:true,
+        port:8090
+    },
     output: {
         path: path.resolve(__dirname,"dist"),
         filename: "[name].bundle.js",
     },
     //所有生成的依赖文件
-    devServer:{
-    	//配置 webpack-dev-server
-    },
     module: {
         rules: [
         //webpack 2.0 3.0 loaders
